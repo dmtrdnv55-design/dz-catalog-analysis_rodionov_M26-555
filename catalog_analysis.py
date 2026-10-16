@@ -227,3 +227,22 @@ mean_rating = average_rating(movies)
 generator_films_rating = {
     movie["title"]: movie["rating"] for movie in movies if movie["rating"] > mean_rating
 }
+
+
+def all_genres(movies):
+    unique_genres = set()
+    for movie in movies:
+        unique_genres.update(movie["genres"])
+    return unique_genres
+
+
+def common_actors(movie1, movie2):
+    actors1 = set(movie1["actors"])
+    actors2 = set(movie2["actors"])
+    return actors1 & actors2
+
+
+def genres_only_in_one(movies_a, movies_b):
+    genres_a = all_genres(movies_a)
+    genres_b = all_genres(movies_b)
+    return genres_a - genres_b
