@@ -83,6 +83,7 @@ movies = [
     },
 ]
 
+
 def average_rating(movies):
     movies_count = len(movies)
     sum_rating = 0
@@ -115,3 +116,24 @@ def duration_in_hours(minutes):
     minute = minutes % 60
     formatted = f"{hours}ч {minute}м"
     return formatted
+
+
+def rating_tier(rating):
+    if rating >= 9:
+        rating_category = "шедевр"
+    elif 7 <= rating < 9:
+        rating_category = "хорошо"
+    else:
+        rating_category = "средне" if 5 <= rating < 7 else "слабо"
+    return rating_category
+
+
+def decade_label(year):
+    match year:
+        case _ if year > 2020:
+            year_category = "новые"
+        case _ if 2015 <= year <= 2020:
+            year_category = "недавние"
+        case _:
+            year_category = "старые"
+    return year_category
